@@ -1,0 +1,19 @@
+<form [formGroup]="vehiculoForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label for="modelo">Modelo</label>
+    <input id="modelo" type="text" formControlName="modelo" />
+    @if (vehiculoForm.controls.modelo.invalid && vehiculoForm.controls.modelo.touched) {
+      <p role="alert">El modelo es obligatorio.</p>
+    }
+  </div>
+
+  <div>
+    <label for="usuarioId">ID de usuario</label>
+    <input id="usuarioId" type="number" formControlName="usuarioId" />
+    @if (vehiculoForm.controls.usuarioId.invalid && vehiculoForm.controls.usuarioId.touched) {
+      <p role="alert">El ID de usuario es obligatorio.</p>
+    }
+  </div>
+
+  <button type="submit">Guardar vehículo</button>
+</form>

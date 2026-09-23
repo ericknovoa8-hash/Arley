@@ -1,0 +1,107 @@
+<main class="workshop-shell">
+  <div class="workshop-backdrop" aria-hidden="true"></div>
+  <div class="workshop-shade" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Autospeed inicio">
+      <span class="brand-mark" aria-hidden="true"><span>A</span></span>
+      <span class="brand-copy">
+        <strong>AUTOSPEED</strong>
+        <small>TALLER MECÁNICO</small>
+      </span>
+    </a>
+
+    <div class="contact-block">
+      <p>CONTACTO: <a href="tel:987654321">987 654 321</a> <span>|</span> <a href="mailto:info@autospeed.es">info@autospeed.es</a></p>
+      <p>DIRECCIÓN: Calle Industrial 45, Madrid</p>
+    </div>
+  </header>
+
+  <section class="content-frame">
+    <div class="intro-copy">
+      <p class="eyebrow">SERVICIO PREMIUM · DESDE 1998</p>
+      <h1>TALLER MECÁNICO <span>AUTOSPEED</span></h1>
+      <p class="tagline">TU AUTO EN LAS MEJORES MANOS</p>
+      <p class="intro-detail">SERVICIO INTEGRAL Y CONFIABLE<br />PARA TU VEHÍCULO</p>
+    </div>
+
+    <section class="registration-panel" aria-labelledby="registration-title">
+      <div class="panel-heading">
+        <div>
+          <p class="panel-kicker">NUEVA ORDEN DE SERVICIO</p>
+          <h2 id="registration-title">REGISTRO DE VEHÍCULO<br />Y CLIENTE</h2>
+        </div>
+        <span class="panel-number">01 <i></i> 06</span>
+      </div>
+
+      <form [formGroup]="registrationForm" (ngSubmit)="submit()" novalidate>
+        <div class="form-grid">
+          <label class="field">
+            <span>Nombre <b>*</b></span>
+            <input type="text" formControlName="nombre" placeholder="Tu nombre" autocomplete="given-name" />
+            @if (registrationForm.controls.nombre.invalid && registrationForm.controls.nombre.touched) {
+              <small>Campo obligatorio</small>
+            }
+          </label>
+
+          <label class="field">
+            <span>Apellido <b>*</b></span>
+            <input type="text" formControlName="apellido" placeholder="Tu apellido" autocomplete="family-name" />
+            @if (registrationForm.controls.apellido.invalid && registrationForm.controls.apellido.touched) {
+              <small>Campo obligatorio</small>
+            }
+          </label>
+
+          <label class="field">
+            <span>Teléfono <b>*</b></span>
+            <input type="tel" formControlName="telefono" placeholder="987 654 321" autocomplete="tel" />
+            @if (registrationForm.controls.telefono.invalid && registrationForm.controls.telefono.touched) {
+              <small>Campo obligatorio</small>
+            }
+          </label>
+
+          <label class="field">
+            <span>Email <b>*</b></span>
+            <input type="email" formControlName="email" placeholder="tu@email.com" autocomplete="email" />
+            @if (registrationForm.controls.email.invalid && registrationForm.controls.email.touched) {
+              <small>Introduce un email válido</small>
+            }
+          </label>
+
+          <label class="field field-wide">
+            <span>Dirección <b>*</b></span>
+            <input type="text" formControlName="direccion" placeholder="Calle, número, ciudad" autocomplete="street-address" />
+            @if (registrationForm.controls.direccion.invalid && registrationForm.controls.direccion.touched) {
+              <small>Campo obligatorio</small>
+            }
+          </label>
+
+          <label class="field field-wide">
+            <span>Modelo Vehículo <b>*</b></span>
+            <input type="text" formControlName="modeloVehiculo" placeholder="Marca y modelo" autocomplete="off" />
+            @if (registrationForm.controls.modeloVehiculo.invalid && registrationForm.controls.modeloVehiculo.touched) {
+              <small>Campo obligatorio</small>
+            }
+          </label>
+        </div>
+
+        <div class="form-footer">
+          <p class="required-note"><b>*</b> Campos obligatorios</p>
+          <button type="submit" [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'GUARDANDO...' : 'REGISTRAR AHORA' }}
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        @if (submitMessage()) {
+          <p class="form-status" [class.form-status-error]="submitError()" role="status">{{ submitMessage() }}</p>
+        }
+      </form>
+    </section>
+  </section>
+
+  <footer class="page-footer">
+    <span>AUTOSPEED <i></i> TALLER MECÁNICO</span>
+    <span>CALIDAD · PRECISIÓN · CONFIANZA</span>
+  </footer>
+</main>
